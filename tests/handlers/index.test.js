@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 
-const indexHandler = require('../../bin/routes/index');
+const indexHandler = require('../../app/handlers/index');
 
 let req = {
     body: {},
