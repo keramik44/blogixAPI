@@ -10,7 +10,6 @@ const options = {
 //TODO rewrite to Promisses
 module.exports = class MongoDBManager {
     constructor() {
-        this.isConnected = false;
         this.connectToMongo();
     }
 
@@ -19,11 +18,16 @@ module.exports = class MongoDBManager {
 
         mongoose.connect(dbUrl, options)
         .then( () => {
-            this.isConnected = true;
+            console.log( 'mongo db' );
         } )
         .catch( (e) => {
             console.log(e);
+            process.exit(403);
         } );
+    }
+
+    insert( model ){
+       return model.save();
     }
 
     insertDumbData( catName ){
